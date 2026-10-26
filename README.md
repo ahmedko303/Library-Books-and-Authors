@@ -1,4 +1,4 @@
-# Library-Books-and-Author
+# Library-Books-and-Authors
 # Lab 3: Foreign Keys and Simple SQL
 
 Problem 2 (Library: Books and Authors) built with **Python + Flask + MySQL**.
