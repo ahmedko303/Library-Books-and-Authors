@@ -13,7 +13,7 @@ Problem 2 (Library: Books and Authors) built with **Python + Flask + MySQL**.
 ## How to run it, step by step
 
 1. **Install** Python 3 and MySQL Server, and make sure MySQL is running.
-2. **Open a terminal in this folder** (`lab3-<student-id>`).
+2. **Open a terminal in this folder** (`lab3-<AhmedAshraf-2204003>`).
 3. **Build the database and insert the seed data:**
    ```
    mysql -u root -p < problem2_DDL.sql
