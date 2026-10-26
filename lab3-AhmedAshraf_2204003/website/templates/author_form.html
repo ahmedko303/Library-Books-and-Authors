@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit author' if author else 'Add author' }}{% endblock %}
+{% block content %}
+<section class="panel form-panel">
+  <h2>{{ 'Edit author' if author else 'Add author' }}</h2>
+  <form method="post" enctype="multipart/form-data">
+    <label>Name
+      <input name="name" required maxlength="100" value="{{ request.form.name or (author.name if author else '') }}">
+    </label>
+    <label>Country
+      <input name="country" maxlength="50" value="{{ request.form.country or ((author.country or '') if author else '') }}">
+    </label>
+    <label>Photo {% if author %}<span class="muted">(leave empty to keep the current one)</span>{% endif %}
+      <input name="photo" type="file" accept="image/*">
+    </label>
+    <div class="row">
+      <button class="btn">{{ 'Save changes' if author else 'Add author' }}</button>
+      <a class="btn ghost" href="{{ url_for('index') }}">Cancel</a>
+    </div>
+  </form>
+</section>
+{% endblock %}

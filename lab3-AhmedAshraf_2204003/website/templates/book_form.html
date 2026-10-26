@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Edit book' if book else 'Add book' }}{% endblock %}
+{% block content %}
+<section class="panel form-panel">
+  <h2>{{ 'Edit book' if book else 'Add book' }}</h2>
+  <form method="post" enctype="multipart/form-data">
+    <label>Title
+      <input name="title" required maxlength="150" value="{{ request.form.title or (book.title if book else '') }}">
+    </label>
+    <label>Price
+      <input name="price" type="number" step="0.01" min="0" required
+             value="{{ request.form.price or (book.price if book else '') }}">
+    </label>
+    <label>Author
+      {% set chosen = (request.form.author_id or (book.author_id if book else ''))|string %}
+      <select name="author_id" required>
+        {% for a in authors %}
+          <option value="{{ a.author_id }}" {{ 'selected' if chosen == a.author_id|string }}>
+            {{ a.author_id }}: {{ a.name }}
+          </option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>Cover picture {% if book %}<span class="muted">(leave empty to keep the current one)</span>{% endif %}
+      <input name="cover" type="file" accept="image/*">
+    </label>
+    <div class="row">
+      <button class="btn">{{ 'Save changes' if book else 'Add book' }}</button>
+      <a class="btn ghost" href="{{ url_for('index') }}">Cancel</a>
+    </div>
+  </form>
+</section>
+{% endblock %}
